@@ -1,20 +1,44 @@
-﻿// main.cpp : Ten plik zawiera funkcję „main”. W nim rozpoczyna się i kończy wykonywanie programu.
-//
+﻿#include <iostream>
+#include <vector>
+#include "MergeSorter.h"
 
-#include <iostream>
+using namespace std;
 
-int main()
-{
-    std::cout << "Hello World!\n";
+// Funkcja pomocnicza do wypisywania wektora
+template <typename T>
+void printVector(const vector<T>& vec) {
+    for (const auto& val : vec) {
+        cout << val << " ";
+    }
+    cout << endl;
 }
 
-// Uruchomienie programu: Ctrl + F5 lub menu Debugowanie > Uruchom bez debugowania
-// Debugowanie programu: F5 lub menu Debugowanie > Rozpocznij debugowanie
+int main() {
+    // Instancja 1: Liczby całkowite (int)
+    cout << "--- Test Int ---" << endl;
+    vector<int> intTab = { 12, 11, 13, 5, 6, 7 };
+    MergeSorter<int> intSorter;
 
-// Porady dotyczące rozpoczynania pracy:
-//   1. Użyj okna Eksploratora rozwiązań, aby dodać pliki i zarządzać nimi
-//   2. Użyj okna programu Team Explorer, aby nawiązać połączenie z kontrolą źródła
-//   3. Użyj okna Dane wyjściowe, aby sprawdzić dane wyjściowe kompilacji i inne komunikaty
-//   4. Użyj okna Lista błędów, aby zobaczyć błędy
-//   5. Wybierz pozycję Projekt > Dodaj nowy element, aby utworzyć nowe pliki kodu, lub wybierz pozycję Projekt > Dodaj istniejący element, aby dodać istniejące pliku kodu do projektu
-//   6. Aby w przyszłości ponownie otworzyć ten projekt, przejdź do pozycji Plik > Otwórz > Projekt i wybierz plik sln
+    cout << "Przed sortowaniem: ";
+    printVector(intTab);
+
+    intSorter.sort(intTab);
+
+    cout << "Po sortowaniu:     ";
+    printVector(intTab);
+
+    // Instancja 2: Liczby zmiennoprzecinkowe (double)
+    cout << "\n--- Test Double ---" << endl;
+    vector<double> doubleTab = { 4.5, 2.1, 9.9, 0.5, 2.1, -3.2 };
+    MergeSorter<double> doubleSorter;
+
+    cout << "Przed sortowaniem: ";
+    printVector(doubleTab);
+
+    doubleSorter.sort(doubleTab);
+
+    cout << "Po sortowaniu:     ";
+    printVector(doubleTab);
+
+    return 0;
+}
